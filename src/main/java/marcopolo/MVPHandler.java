@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * 星际MVP争夺战
  */
-public class MarcoHandler {
+public class MVPHandler {
     public static void main(String[] args) {
         Scanner input = new Scanner(InputUtil.getInput("marcopolo/input1"));
         while (input.hasNextLine()) {

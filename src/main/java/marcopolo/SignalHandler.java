@@ -5,7 +5,12 @@ package marcopolo;
  * @Author cy
  * @Date 2023/5/26 18:42
  **/
-public class MarcoHandler2 {
+public class SignalHandler {
+    public static void main(String[] args) {
+        handle("00101010101100001010010");
+        handle("00101010101000010100100");
+    }
+
     public static void handle(String signals) {
         int start = 0;
         int end = 0;
@@ -41,6 +46,7 @@ public class MarcoHandler2 {
                         }
                         start = end;
                         pre = start;
+                        // 恢复,交替判断标识
                         isJiaoti = true;
                         end++;
                     }
@@ -58,10 +64,20 @@ public class MarcoHandler2 {
         }
 
         // 判断最后一个情况
-        // 1、最后一个end不为0不是一个信号
-        // 2、end为0,判断start pre end是否是连续0
-        // 即上述判断是否为一个信号
-        // 是的话，判断是否为交替的，是的话，再判断是否为最长。
-        //if (signals.charAt())
+        // 是否是一个信号
+        if (signals.charAt(pre) == '0') {
+            // 判断是否是连续0
+            int len = end - start;
+            if (len > 2 && isJiaoti && len > ansLen) {
+                ansLen = len;
+                ansStart = start;
+                ansEnd = end;
+            }
+        }
+        if (ansStart == -1) {
+            System.out.println(-1);
+        } else {
+            System.out.println(signals.substring(ansStart, ansEnd));
+        }
     }
 }
