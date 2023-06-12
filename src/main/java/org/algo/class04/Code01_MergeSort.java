@@ -5,7 +5,7 @@ package org.algo.class04;
  * Author: cy
  * Date: 2023/6/7
  * Time: 0:22
- * Description: 归并排序递归和非递归实现
+ * Description: 归并排序 递归和非递归实现
  */
 public class Code01_MergeSort {
     // 递归实现
@@ -47,6 +47,50 @@ public class Code01_MergeSort {
         }
         for (int j = 0; j < help.length; j++) {
             arr[L + j] = help[j];
+        }
+    }
+
+    public static void mergeSort2(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        int step = 1;
+        int N = arr.length;
+        while (step < N) {
+            int L = 0;
+            while (L < N) {
+                int M = 0;
+                // 从长度推，避免越界
+                if (N - L >= step) {
+                    M = L + step - 1;
+                } else {
+                    M = N - 1;
+                }
+                // L....M
+                if (M == N-1) {
+                    break;
+                }
+                int R = 0;
+                if (N - 1 - M >= step) {
+                    R = M + step;
+                } else {
+                    R = N - 1;
+                }
+                // L...MM+...R merge
+                merge(arr, L, M, R);
+
+                // L = R + 1; 直接写有可能越界
+                if (R == N-1) {
+                    break;
+                } else {
+                    L = R + 1;
+                }
+            }
+            if (step > (N / 2)) {
+                break;
+            } else {
+                step *= 2;
+            }
         }
     }
 }
