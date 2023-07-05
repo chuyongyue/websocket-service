@@ -1,5 +1,7 @@
 package iostreams;
 
+import util.FileUtils;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,6 +24,6 @@ public class BufferedInputFile {
     }
     public static void main(String[] args) {
         System.out.print(
-                read("BufferedInputFile.java"));
+                read(FileUtils.FILE_PATH + "iostreams/input"));
     }
 }

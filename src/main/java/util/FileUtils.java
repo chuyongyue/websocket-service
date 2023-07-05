@@ -17,6 +17,7 @@ import java.nio.charset.StandardCharsets;
 public class FileUtils
 {
     public static String FILENAME_PATTERN = "[a-zA-Z0-9_\\-\\|\\.\\u4e00-\\u9fa5]+";
+    public static String FILE_PATH = "D:/code/javacode/websocket-service/src/main/resources/";
 
     /**
      * 输出指定文件的byte数组
